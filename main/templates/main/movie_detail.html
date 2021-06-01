@@ -108,18 +108,8 @@
                 <img src="{{ image.image.url }}" class="img-movie-shorts" alt="{{ image.description }}">
                 {% endfor %}
             </p>
-            <p class="editContent"  
-            {{movie.description}}
-            </p>
-            <p class="mt-3 italic-blue editContent"
-                 
-                <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/A36LahZNUiE?controls=0"
-                        frameborder="0" allow="accelerometer; autoplay;
-                            encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-
-                </iframe>
+            <p class="editContent">
+            {{movie.description|safe}}
             </p>
         </div>
         <hr>
