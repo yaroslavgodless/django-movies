@@ -94,3 +94,17 @@ class AddStarRating(View):
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+class Search(GenreYear, ListView):
+    paginate_by = 3
+
+    def get_queryset(self):
+        q = self.request.GET.get('q').capitalize()
+        return Movie.objects.filter(title__icontains=q)
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context
+    
